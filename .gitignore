@@ -1,0 +1,15 @@
+/android/*
+/build/*
+/ios/*
+/web/*
+linux/*
+windows/*
+test/*
+macos/*
+
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+analysis_options.yaml
+insta_clone.iml
+pubspec.lock
