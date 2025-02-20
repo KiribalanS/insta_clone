@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:insta_clone/direct_messages/widgets/custom_icon.dart';
 import 'package:insta_clone/direct_messages/widgets/custom_tile.dart';
 import 'package:insta_clone/direct_messages/widgets/shared_files_widget.dart';
@@ -52,105 +51,110 @@ class _ChatProfileState extends State<ChatProfile>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CircleAvatar(
-              radius: 45,
-              child: Center(
-                child: Icon(
-                  Icons.person,
-                  size: 45,
+        appBar: AppBar(),
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              SliverToBoxAdapter(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CircleAvatar(
+                      radius: 45,
+                      child: Center(
+                        child: Icon(
+                          Icons.person,
+                          size: 45,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "userName",
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CustomIcon(
+                          content: "Profile",
+                          icon: Icons.person,
+                        ),
+                        CustomIcon(
+                          content: "Search",
+                          icon: Icons.search,
+                        ),
+                        CustomIcon(
+                          content: "Mute",
+                          icon: Icons.music_off_outlined,
+                        ),
+                        CustomIcon(
+                          content: "Options",
+                          icon: Icons.more_horiz,
+                        ),
+                      ],
+                    ),
+                    ListTile(
+                      leading: CircleAvatar(
+                        radius: 20,
+                        child: Center(
+                          child: Icon(
+                            Icons.image,
+                            size: 35,
+                          ),
+                        ),
+                      ),
+                      title: Text("Theme"),
+                      subtitle: Text("Star Wars: The acolyte"),
+                      trailing: Card(
+                        elevation: 0,
+                        color: Colors.blue,
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Text(
+                            "New",
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ),
+                      ),
+                    ),
+                    ...list,
+                  ],
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "userName",
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomIcon(
-                  content: "Profile",
-                  icon: Icons.person,
-                ),
-                CustomIcon(
-                  content: "Search",
-                  icon: Icons.search,
-                ),
-                CustomIcon(
-                  content: "Mute",
-                  icon: Icons.music_off_outlined,
-                ),
-                CustomIcon(
-                  content: "Options",
-                  icon: Icons.more_horiz,
-                ),
-              ],
-            ),
-            ListTile(
-              leading: CircleAvatar(
-                radius: 20,
-                child: Center(
-                  child: Icon(
-                    Icons.image,
-                    size: 35,
-                  ),
-                ),
-              ),
-              title: Text("Theme"),
-              subtitle: Text("Star Wars: The acolyte"),
-              trailing: Card(
-                elevation: 0,
-                color: Colors.blue,
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Text(
-                    "New",
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ),
-              ),
-            ),
-            ...list,
-            TabBar(
-              dividerColor: Colors.black,
-              indicatorColor: Colors.blue,
-              indicatorWeight: 5,
-              dividerHeight: 0,
-              indicator: BoxDecoration(),
-              unselectedLabelColor: Theme.of(context).colorScheme.primary,
-              labelColor: Theme.of(context).colorScheme.onPrimary,
-              controller: _controller,
-              tabs: [
-                Icon(Icons.photo_size_select_large),
-                Icon(Icons.offline_share),
-                Icon(Icons.save),
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.4,
-              child: TabBarView(
+              )
+            ];
+          },
+          body: Column(
+            children: [
+              TabBar(
+                dividerColor: Colors.black,
+                indicatorColor: Colors.blue,
+                indicatorWeight: 5,
+                dividerHeight: 0,
+                indicator: BoxDecoration(),
+                unselectedLabelColor: Theme.of(context).colorScheme.primary,
+                labelColor: Theme.of(context).colorScheme.onPrimary,
                 controller: _controller,
-                children: [
+                tabs: [
+                  Icon(Icons.photo_size_select_large),
+                  Icon(Icons.offline_share),
+                  Icon(Icons.save),
+                ],
+              ),
+              Expanded(
+                child: TabBarView(controller: _controller, children: [
                   SharedFilesWidget(),
                   SharedPosts(),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(color: Colors.red),
                   ),
-                ],
+                ]),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
+            ],
+          ),
+        ));
   }
 }
