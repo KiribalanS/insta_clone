@@ -1,0 +1,58 @@
+{
+  "name": "",
+  "css_prefix_text": "",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "b52aa05c9c55c41f1768cdaa940401a8",
+      "css": "comment-alt",
+      "code": 59393,
+      "src": "websymbols"
+    },
+    {
+      "uid": "6fbd93c0d220507921015a15575009e5",
+      "css": "paper-plane",
+      "code": 59394,
+      "src": "linecons"
+    },
+    {
+      "uid": "5b1a68729f60f8be3769238379d1b8e9",
+      "css": "comment",
+      "code": 59395,
+      "src": "linecons"
+    },
+    {
+      "uid": "a93e9855e45f1ca35d09aa7edcd97a51",
+      "css": "library_add",
+      "code": 59850,
+      "src": "material"
+    },
+    {
+      "uid": "140003576b49c04993089745d0f48fd7",
+      "css": "turned_in_not",
+      "code": 60257,
+      "src": "material"
+    },
+    {
+      "uid": "a594d6bca45d0f59a082eaf9fc992fbe",
+      "css": "turned_in",
+      "code": 60256,
+      "src": "material"
+    },
+    {
+      "uid": "cb13afd4722a849d48056540bb74c47e",
+      "css": "play",
+      "code": 59392,
+      "src": "entypo"
+    },
+    {
+      "uid": "342dd4f00ec75318e1484d360cc21871",
+      "css": "video",
+      "code": 59396,
+      "src": "typicons"
+    }
+  ]
+}

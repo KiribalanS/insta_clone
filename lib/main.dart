@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:insta_clone/direct_messages/cubit/message_cubit.dart';
 import 'package:insta_clone/home_screen.dart';
+import 'package:insta_clone/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,20 +13,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-
-        // textTheme: GoogleFonts.oleoScriptTextTheme(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => MessageCubit(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Instagram clone',
+        debugShowCheckedModeBanner: false,
+        theme: CustomThemes.lightTheme,
+        darkTheme: CustomThemes.darkTheme,
+        themeMode: ThemeMode.light,
+        home: const HomeScreen(),
       ),
-      darkTheme: ThemeData.dark(useMaterial3: true).copyWith(
-        textTheme: GoogleFonts.oleoScriptTextTheme(),
-      ),
-      themeMode: ThemeMode.light,
-      home: const HomeScreen(title: 'Instagram clone'),
     );
   }
 }

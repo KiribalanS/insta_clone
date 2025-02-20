@@ -40,10 +40,10 @@ class _PostWidgetState extends State<PostWidget> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "User Name",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                        ),
                   ),
                 ),
               ),
@@ -101,15 +101,27 @@ class _PostWidgetState extends State<PostWidget> {
               child: Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: "Liked by "),
+                    TextSpan(
+                      text: "Liked by ",
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(fontWeight: FontWeight.w600),
+                    ),
                     TextSpan(
                       text: "person_1 ",
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(fontWeight: FontWeight.w600),
                     ),
                     TextSpan(text: "and "),
                     TextSpan(
                       text: "others ",
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),

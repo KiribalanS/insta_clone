@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:insta_clone/screens/chat_screen.dart';
+import 'package:insta_clone/direct_messages/screens/direct_message.dart';
 import 'package:insta_clone/models/story_model.dart';
 import 'package:insta_clone/widgets/bottom_navigation_bar.dart';
 import 'package:insta_clone/widgets/post_widget.dart';
 import 'package:insta_clone/widgets/story_widget.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.title});
-
-  final String title;
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -18,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Route _createRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
-          const ChatScreen(),
+          const DirectMessage(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(1.0, 0.0);
         const end = Offset.zero;
@@ -36,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         title: Image(
           height: 50,
           image: AssetImage("assets/images/logo_no_bg.png"),
