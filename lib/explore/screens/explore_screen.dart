@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/widgets/search_widget.dart';
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});
@@ -9,22 +10,7 @@ class ExploreScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                color: Colors.grey.shade300,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 8.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.all(3),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            SearchWidget(),
             Center(
               child: Text("Explore"),
             ),

@@ -33,14 +33,20 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: Icon(
-            Icons.arrow_back,
-            size: 35,
-          ),
-        ),
-        leadingWidth: 18,
+        // leading: Padding(
+        //   padding: const EdgeInsets.only(right: 8.0, left: 10),
+        //   child: InkWell(
+        //     onTap: () => Navigator.pop(context),
+        //     child: Center(
+        //       child: Icon(
+        //         Icons.arrow_back,
+        //         size: 35,
+        //       ),
+        //     ),
+        //   ),
+        // ),
+
+        leadingWidth: 20,
         title: ListTile(
           onTap: () {
             Navigator.push(
@@ -50,6 +56,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             );
           },
+          minLeadingWidth: 0,
           leading: CircleAvatar(
             radius: 20,
             child: Icon(

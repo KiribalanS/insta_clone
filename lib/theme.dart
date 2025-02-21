@@ -8,7 +8,7 @@ class CustomThemes {
     primary: Color.fromARGB(255, 180, 184, 206), // Instagram Blue
     onPrimary: Colors.black,
     secondary: Color(0xFF5851DB), // Secondary Gradient Color
-    onSecondary: Colors.white,
+    onSecondary: Color.fromARGB(255, 40, 37, 37),
     surface: Colors.white,
     onSurface: Colors.black,
     error: Colors.red,
@@ -32,12 +32,18 @@ class CustomThemes {
       backgroundColor: Colors.white,
     ),
     iconTheme: IconThemeData().copyWith(
-      color: Colors.black54,
+      color: Colors.black87,
     ),
     textTheme: TextTheme().copyWith(
       titleLarge: GoogleFonts.oleoScriptTextTheme().titleLarge!.copyWith(
             color: Colors.black,
           ),
+      headlineMedium: TextStyle().copyWith(
+        color: Colors.black,
+      ),
+      headlineSmall: TextStyle().copyWith(
+        color: Colors.black,
+      ),
       bodyLarge: TextStyle().copyWith(
         color: Colors.black,
       ),

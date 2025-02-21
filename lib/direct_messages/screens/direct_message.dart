@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/direct_messages/screens/chat_screen.dart';
+import 'package:insta_clone/direct_messages/widgets/notes_widget.dart';
 import 'package:insta_clone/models/chat_model.dart';
+import 'package:insta_clone/models/notes_model.dart';
 
 class DirectMessage extends StatelessWidget {
   const DirectMessage({super.key});
@@ -38,6 +40,17 @@ class DirectMessage extends StatelessWidget {
                   prefixIcon: Icon(Icons.search, size: 25),
                 ),
               ),
+            ),
+          ),
+          //notes
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .18,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: dummyNotes.length,
+              itemBuilder: (context, index) {
+                return NotesWidget(note: dummyNotes[index]);
+              },
             ),
           ),
           Row(

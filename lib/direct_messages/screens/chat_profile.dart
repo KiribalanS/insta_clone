@@ -127,9 +127,9 @@ class _ChatProfileState extends State<ChatProfile>
             ];
           },
           body: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               TabBar(
-                dividerColor: Colors.black,
                 indicatorColor: Colors.blue,
                 indicatorWeight: 5,
                 dividerHeight: 0,
@@ -144,14 +144,17 @@ class _ChatProfileState extends State<ChatProfile>
                 ],
               ),
               Expanded(
-                child: TabBarView(controller: _controller, children: [
-                  SharedFilesWidget(),
-                  SharedPosts(),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(color: Colors.red),
-                  ),
-                ]),
+                child: TabBarView(
+                  controller: _controller,
+                  children: [
+                    SharedFilesWidget(),
+                    SharedPosts(),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(color: Colors.red),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

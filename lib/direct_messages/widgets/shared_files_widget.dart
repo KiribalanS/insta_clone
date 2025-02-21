@@ -6,7 +6,7 @@ class SharedFilesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      // physics: NeverScrollableScrollPhysics(),
+      physics: NeverScrollableScrollPhysics(),
       // shrinkWrap: true,
 
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

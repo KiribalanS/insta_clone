@@ -55,6 +55,7 @@ class _MessageFieldState extends State<MessageField> {
           borderRadius: BorderRadius.circular(25),
         ),
         child: TextField(
+          autofocus: true,
           maxLines: null,
           enabled: true,
           controller: widget.messageController,
