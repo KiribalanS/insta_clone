@@ -92,6 +92,12 @@
       "languageVersion": "3.5"
     },
     {
+      "name": "flutter_staggered_grid_view",
+      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/flutter_staggered_grid_view-0.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///home/dell/snap/flutter/common/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -248,6 +254,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "skeletonizer",
+      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/skeletonizer-1.4.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///home/dell/snap/flutter/common/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -332,7 +344,7 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-02-21T07:30:20.574364Z",
+  "generated": "2025-02-24T07:10:41.662367Z",
   "generator": "pub",
   "generatorVersion": "3.6.1",
   "flutterRoot": "file:///home/dell/snap/flutter/common/flutter",

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PostWidget extends StatefulWidget {
-  const PostWidget({super.key});
+  const PostWidget({super.key, this.path});
+  final String? path;
 
   @override
   State<PostWidget> createState() => _PostWidgetState();
@@ -19,6 +20,7 @@ class _PostWidgetState extends State<PostWidget> {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.all(5.0),
@@ -51,9 +53,12 @@ class _PostWidgetState extends State<PostWidget> {
             ],
           ),
         ),
-        Image(
-          fit: BoxFit.fitWidth,
-          image: AssetImage("assets/post/post.jpeg"),
+        Center(
+          child: Image(
+            fit: BoxFit.fitWidth,
+            alignment: Alignment.center,
+            image: AssetImage(widget.path ?? "assets/post/post.jpeg"),
+          ),
         ),
         Row(
           children: [

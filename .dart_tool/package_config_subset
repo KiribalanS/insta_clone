@@ -54,6 +54,10 @@ flutter_lints
 3.5
 file:///home/dell/.pub-cache/hosted/pub.dev/flutter_lints-5.0.0/
 file:///home/dell/.pub-cache/hosted/pub.dev/flutter_lints-5.0.0/lib/
+flutter_staggered_grid_view
+2.12
+file:///home/dell/.pub-cache/hosted/pub.dev/flutter_staggered_grid_view-0.7.0/
+file:///home/dell/.pub-cache/hosted/pub.dev/flutter_staggered_grid_view-0.7.0/lib/
 gif
 2.12
 file:///home/dell/.pub-cache/hosted/pub.dev/gif-2.3.0/
@@ -154,6 +158,10 @@ provider
 2.12
 file:///home/dell/.pub-cache/hosted/pub.dev/provider-6.1.2/
 file:///home/dell/.pub-cache/hosted/pub.dev/provider-6.1.2/lib/
+skeletonizer
+3.0
+file:///home/dell/.pub-cache/hosted/pub.dev/skeletonizer-1.4.3/
+file:///home/dell/.pub-cache/hosted/pub.dev/skeletonizer-1.4.3/lib/
 source_span
 2.18
 file:///home/dell/.pub-cache/hosted/pub.dev/source_span-1.10.0/

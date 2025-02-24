@@ -35,6 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: Colors.white,
+        leading: SizedBox(),
+        leadingWidth: 0,
         title: Image(
           height: 50,
           image: AssetImage("assets/images/logo_no_bg.png"),

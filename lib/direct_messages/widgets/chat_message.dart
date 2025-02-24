@@ -7,10 +7,36 @@ class ChatMessageWidget extends StatelessWidget {
   final MessageModel messageModel;
   @override
   Widget build(BuildContext context) {
-    return BubbleNormal(
-      isSender: messageModel.isMe,
-      text: messageModel.message,
-      color: Colors.blue,
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        minWidth: 50,
+        maxWidth: 150,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (!messageModel.isMe)
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: CircleAvatar(
+                radius: 20,
+                child: Center(
+                  child: Icon(
+                    Icons.person,
+                    size: 30,
+                  ),
+                ),
+              ),
+            ),
+          Expanded(
+            child: BubbleNormal(
+              isSender: messageModel.isMe,
+              text: messageModel.message,
+              color: Colors.blue,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
