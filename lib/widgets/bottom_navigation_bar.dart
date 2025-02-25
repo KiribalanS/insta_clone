@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/constants/ui_contants.dart';
 import 'package:insta_clone/create_post/screens/create_post.dart';
 import 'package:insta_clone/explore/screens/explore_screen.dart';
-import 'package:insta_clone/home_screen.dart';
+import 'package:insta_clone/home/screens/home.dart';
 import 'package:insta_clone/profile/profile_screen.dart';
+import 'package:insta_clone/reels/reels_page_view.dart';
 import 'package:insta_clone/reels/reels_screen.dart';
 
 class CustomNavigationBar extends StatelessWidget {
-  const CustomNavigationBar({super.key});
-
+  const CustomNavigationBar({super.key, this.action});
+  final void Function()? action;
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
+      onDestinationSelected: (value) {
+        if (action != null) {
+          action!();
+        }
+      },
       backgroundColor: Colors.white,
       destinations: [
         IconButton(
@@ -24,7 +31,7 @@ class CustomNavigationBar extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HomeScreen(),
+                builder: (context) => HomePageView(),
               ),
             );
           },
@@ -54,11 +61,10 @@ class CustomNavigationBar extends StatelessWidget {
               ),
             );
           },
-          child: SizedBox(
-            height: 25,
-            width: 20,
-            child: Image(
-              image: AssetImage("assets/icons/more.png"),
+          child: Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: Icon(
+              CustomIcons.library_add,
             ),
           ),
         ),
@@ -67,14 +73,17 @@ class CustomNavigationBar extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ReelsScreen(),
+                builder: (context) => ReelsPageView(),
               ),
             );
           },
           child: SizedBox(
             height: 25,
             width: 20,
-            child: Image(image: AssetImage("assets/icons/reel.png")),
+            child: Image(
+              color: Colors.black,
+              image: AssetImage("assets/icons/reel.png"),
+            ),
           ),
         ),
         InkWell(

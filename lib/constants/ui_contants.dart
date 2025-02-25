@@ -75,3 +75,27 @@ class ImageTile extends StatelessWidget {
     );
   }
 }
+
+class CustomIcons {
+  CustomIcons._();
+
+  static const _kFontFam = 'MyFlutterApp';
+  static const String? _kFontPkg = null;
+
+  static const IconData play =
+      IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData comment_alt =
+      IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData paper_plane =
+      IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData comment =
+      IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData video =
+      IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData library_add =
+      IconData(0xe9ca, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData turned_in =
+      IconData(0xeb60, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData turned_in_not =
+      IconData(0xeb61, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+}

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/constants/ui_contants.dart';
+import 'package:lottie/lottie.dart';
 
 class PostWidget extends StatefulWidget {
   const PostWidget({super.key, this.path});
@@ -8,8 +10,45 @@ class PostWidget extends StatefulWidget {
   State<PostWidget> createState() => _PostWidgetState();
 }
 
-class _PostWidgetState extends State<PostWidget> {
-  bool isLiked = false, isSaved = false;
+class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
+  bool isLiked = false, isSaved = false, toAnimate = false;
+  late AnimationController likeAnimationController =
+      AnimationController(vsync: this);
+
+  @override
+  void dispose() {
+    super.dispose();
+    likeAnimationController.dispose();
+  }
+
+  void showAnimation() {
+    likeAnimationController.duration = Duration(seconds: 1);
+    likeAnimationController.forward();
+  }
+
+  void likePost() {
+    setState(() {
+      isLiked = !isLiked;
+      if (isLiked) {
+        toAnimate = true;
+      }
+    });
+    showAnimation();
+  }
+
+  @override
+  void initState() {
+    likeAnimationController.addListener(() {
+      if (likeAnimationController.isCompleted) {
+        setState(() {
+          toAnimate = false;
+        });
+        likeAnimationController.reset();
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -53,47 +92,64 @@ class _PostWidgetState extends State<PostWidget> {
             ],
           ),
         ),
-        Center(
-          child: Image(
-            fit: BoxFit.fitWidth,
-            alignment: Alignment.center,
-            image: AssetImage(widget.path ?? "assets/post/post.jpeg"),
-          ),
+        Stack(
+          children: [
+            GestureDetector(
+              onDoubleTap: likePost,
+              child: Center(
+                child: Image(
+                  fit: BoxFit.fitWidth,
+                  alignment: Alignment.center,
+                  image: AssetImage(widget.path ?? "assets/post/post.jpeg"),
+                ),
+              ),
+            ),
+            if (toAnimate)
+              Center(
+                child: Lottie.asset(
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.fill,
+                  "assets/lottie/like_2.json",
+                  repeat: false,
+                  controller: likeAnimationController,
+                ),
+              ),
+          ],
         ),
         Row(
           children: [
             IconButton(
-              onPressed: () {
-                setState(() {
-                  isLiked = !isLiked;
-                });
-              },
-              icon: Icon(isLiked ? Icons.favorite : Icons.favorite_border),
+              onPressed: likePost,
+              icon: Icon(
+                  size: 30, isLiked ? Icons.favorite : Icons.favorite_border),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: SizedBox(
-                height: 25,
-                width: 20,
-                child: Image(image: AssetImage("assets/icons/chat.png")),
+              child: Icon(
+                CustomIcons.comment,
+                size: 27,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: 25,
-                width: 20,
-                child: Image(image: AssetImage("assets/icons/send.png")),
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Icon(
+                CustomIcons.paper_plane,
+                size: 27,
               ),
             ),
             Expanded(child: SizedBox()),
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: SizedBox(
-                height: 25,
-                width: 20,
-                child: Image(
-                  image: AssetImage("assets/icons/save-instagram.png"),
+              child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    isSaved = !isSaved;
+                  });
+                },
+                icon: Icon(
+                  isSaved ? CustomIcons.turned_in : CustomIcons.turned_in_not,
+                  size: 33,
                 ),
               ),
             ),

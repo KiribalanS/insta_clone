@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:insta_clone/direct_messages/cubit/message_cubit.dart';
-import 'package:insta_clone/home_screen.dart';
+import 'package:insta_clone/home/screens/home.dart';
 import 'package:insta_clone/theme.dart';
 
 void main() {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         theme: CustomThemes.lightTheme,
         darkTheme: CustomThemes.darkTheme,
         themeMode: ThemeMode.light,
-        home: const HomeScreen(),
+        home: const HomePageView(),
       ),
     );
   }
