@@ -100,6 +100,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                             height: 100,
                             width: 80,
                             index: index % 10,
+                            path: "assets/jpeg/${index % 10}.jpeg",
                             // extent: (index % 5 + 1) * 100,
                           ),
                         );

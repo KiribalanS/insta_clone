@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/constants/ui_contants.dart';
 
-class SharedPosts extends StatelessWidget {
-  const SharedPosts({super.key});
+class SavedPosts extends StatelessWidget {
+  const SavedPosts({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class SharedPosts extends StatelessWidget {
         crossAxisSpacing: 2,
         mainAxisSpacing: 2,
       ),
-      itemCount: 15,
+      itemCount: 5,
       itemBuilder: (context, index) => Padding(
         padding: const EdgeInsets.all(3.0),
         child: Container(
@@ -25,8 +25,8 @@ class SharedPosts extends StatelessWidget {
             child: ImageTile(
               height: 100,
               width: 80,
-              index: index % 8,
-              path: "assets/jpg/${index % 8}.jpg",
+              index: index % 10,
+              path: "assets/png/${index % 3}.png",
               // extent: (index % 5 + 1) * 100,
             ),
           ),

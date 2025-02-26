@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/direct_messages/widgets/custom_icon.dart';
 import 'package:insta_clone/direct_messages/widgets/custom_tile.dart';
+import 'package:insta_clone/direct_messages/widgets/saved_post.dart';
 import 'package:insta_clone/direct_messages/widgets/shared_files_widget.dart';
 import 'package:insta_clone/direct_messages/widgets/shared_posts.dart';
 
@@ -149,10 +150,7 @@ class _ChatProfileState extends State<ChatProfile>
                   children: [
                     SharedFilesWidget(),
                     SharedPosts(),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(color: Colors.red),
-                    ),
+                    SavedPosts(),
                   ],
                 ),
               ),

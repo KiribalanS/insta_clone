@@ -58,7 +58,10 @@ class ImageTile extends StatelessWidget {
     required this.index,
     required this.width,
     required this.height,
+    required this.path,
   });
+
+  final String path;
 
   final int index;
   final int width;
@@ -68,7 +71,7 @@ class ImageTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       // 'https://picsum.photos/$width/$height?random=$index',
-      "assets/jpeg/$index.jpeg",
+      path,
       width: width.toDouble(),
       // height: height.toDouble(),
       fit: BoxFit.cover,

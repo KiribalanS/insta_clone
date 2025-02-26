@@ -24,7 +24,7 @@ class DirectMessage extends StatelessWidget {
           ],
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -53,57 +53,60 @@ class DirectMessage extends StatelessWidget {
               },
             ),
           ),
-          Row(
-            children: [
-              Expanded(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Messages",
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-              )),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  "Requestes",
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: Colors.blue,
-                      ),
-                ),
-              )
-            ],
+          SizedBox(
+            height: 40,
+            child: Row(
+              children: [
+                Expanded(
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Messages",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                )),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Requestes",
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Colors.blue,
+                        ),
+                  ),
+                )
+              ],
+            ),
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: dummyChat.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  onTap: () {
-                    print("object");
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ChatScreen(),
-                      ),
-                    );
-                  },
-                  leading: CircleAvatar(
-                    backgroundColor: Colors.blueGrey,
-                    radius: 25,
-                    child: Center(
-                      child: Icon(
-                        size: 35,
-                        Icons.person,
-                      ),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: dummyChat.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                onTap: () {
+                  print("object");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ChatScreen(),
+                    ),
+                  );
+                },
+                leading: CircleAvatar(
+                  backgroundColor: Colors.blueGrey,
+                  radius: 25,
+                  child: Center(
+                    child: Icon(
+                      size: 35,
+                      Icons.person,
                     ),
                   ),
-                  title: Text(dummyChat[index].name),
-                  subtitle: Text(dummyChat[index].lastMessage),
-                  trailing: Icon(Icons.camera_alt_outlined),
-                );
-              },
-            ),
+                ),
+                title: Text(dummyChat[index].name),
+                subtitle: Text(dummyChat[index].lastMessage),
+                trailing: Icon(Icons.camera_alt_outlined),
+              );
+            },
           ),
         ],
       ),

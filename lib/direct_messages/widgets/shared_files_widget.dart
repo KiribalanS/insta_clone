@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/constants/ui_contants.dart';
 
 class SharedFilesWidget extends StatelessWidget {
   const SharedFilesWidget({super.key});
@@ -19,10 +20,14 @@ class SharedFilesWidget extends StatelessWidget {
       itemBuilder: (context, index) => Padding(
         padding: const EdgeInsets.all(3.0),
         child: Container(
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.all(1),
           color: Colors.orange,
-          child: Center(
-            child: Text("file ${index + 1}"),
+          child: ImageTile(
+            height: 100,
+            width: 80,
+            index: index % 10,
+            path: "assets/jpeg/${index % 10}.jpeg",
+            // extent: (index % 5 + 1) * 100,
           ),
         ),
       ),
