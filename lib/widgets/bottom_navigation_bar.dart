@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_clone/constants/ui_contants.dart';
 import 'package:insta_clone/create_post/screens/create_post.dart';
@@ -7,15 +8,21 @@ import 'package:insta_clone/profile/profile_screen.dart';
 import 'package:insta_clone/reels/reels_page_view.dart';
 import 'package:insta_clone/reels/reels_screen.dart';
 
-class CustomNavigationBar extends StatelessWidget {
+class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({super.key, this.action});
   final void Function()? action;
+
+  @override
+  State<CustomNavigationBar> createState() => _CustomNavigationBarState();
+}
+
+class _CustomNavigationBarState extends State<CustomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
       onDestinationSelected: (value) {
-        if (action != null) {
-          action!();
+        if (widget.action != null) {
+          widget.action!();
         }
       },
       backgroundColor: Colors.white,
@@ -57,7 +64,18 @@ class CustomNavigationBar extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CreatePost(),
+                builder: (context) => CreatePost(
+                  onTap: (context) {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePageView(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                  shouldPop: false,
+                ),
               ),
             );
           },

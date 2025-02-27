@@ -11,20 +11,12 @@ class ReelsPageView extends StatefulWidget {
 }
 
 class _ReelsPageViewState extends State<ReelsPageView> {
-  late VideoPlayerController _controller;
-
   List<String> urls = [
     'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
     'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
     'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
     'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
   ];
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
