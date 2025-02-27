@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/constants/ui_contants.dart';
+import 'package:insta_clone/widgets/show_commet.dart';
+import 'package:insta_clone/widgets/show_send.dart';
 import 'package:lottie/lottie.dart';
 
 class PostWidget extends StatefulWidget {
@@ -126,16 +128,35 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: Icon(
-                CustomIcons.comment,
-                size: 27,
+              child: IconButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                    useSafeArea: true,
+                    isDismissible: true,
+                    // constraints: BoxConstraints.,
+                    context: context,
+                    builder: (context) => ShowCommet(),
+                  );
+                },
+                icon: Icon(
+                  CustomIcons.comment,
+                  size: 27,
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: Icon(
-                CustomIcons.paper_plane,
-                size: 27,
+              child: IconButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) => ShowSend(),
+                  );
+                },
+                icon: Icon(
+                  CustomIcons.paper_plane,
+                  size: 27,
+                ),
               ),
             ),
             Expanded(child: SizedBox()),

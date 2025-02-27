@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/reels/reels_screen.dart';
 import 'package:insta_clone/widgets/bottom_navigation_bar.dart';
-import 'package:video_player/video_player.dart';
 
 class ReelsPageView extends StatefulWidget {
   const ReelsPageView({super.key});
