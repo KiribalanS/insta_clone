@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/constants/ui_contants.dart';
-import 'package:insta_clone/widgets/show_commet.dart';
-import 'package:insta_clone/widgets/show_send.dart';
+import 'package:insta_clone/comment/show_commet.dart';
+import 'package:insta_clone/send/screens/show_send.dart';
 import 'package:lottie/lottie.dart';
 
 class PostWidget extends StatefulWidget {
@@ -50,6 +50,8 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
     });
     super.initState();
   }
+
+  int count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -131,11 +133,28 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
               child: IconButton(
                 onPressed: () {
                   showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
                     useSafeArea: true,
+                    isScrollControlled: true,
                     isDismissible: true,
+                    enableDrag: true,
                     // constraints: BoxConstraints.,
                     context: context,
-                    builder: (context) => ShowCommet(),
+                    builder: (context) => Padding(
+                      padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom,
+                      ),
+                      child: DraggableScrollableSheet(
+                          expand: true,
+                          initialChildSize: .5, // Half-screen initial height
+                          minChildSize: .5,
+                          maxChildSize: 1, // Full screen when scrolled
+                          builder: (context, scrollController) {
+                            return ShowCommet(
+                              controller: scrollController,
+                            );
+                          }),
+                    ),
                   );
                 },
                 icon: Icon(
@@ -149,12 +168,32 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
               child: IconButton(
                 onPressed: () {
                   showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
+                    isScrollControlled: true,
+                    enableDrag: true,
+                    isDismissible: true,
                     context: context,
-                    builder: (context) => ShowSend(),
+                    builder: (context) => Padding(
+                      padding: EdgeInsets.only(
+                        top: 30.0,
+                        bottom: MediaQuery.of(context).viewInsets.bottom,
+                      ),
+                      child: DraggableScrollableSheet(
+                          expand: true,
+                          initialChildSize: .7, // Half-screen initial height
+                          minChildSize: .7,
+                          maxChildSize: 1, // Full screen when scrolled
+
+                          builder: (context, scrollController) {
+                            return ShowSend(
+                              controller: scrollController,
+                            );
+                          }),
+                    ),
                   );
                 },
                 icon: Icon(
-                  CustomIcons.paper_plane,
+                  CustomIcons.paperPlane,
                   size: 27,
                 ),
               ),
@@ -169,7 +208,7 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
                   });
                 },
                 icon: Icon(
-                  isSaved ? CustomIcons.turned_in : CustomIcons.turned_in_not,
+                  isSaved ? CustomIcons.turnedIn : CustomIcons.turnedInNot,
                   size: 33,
                 ),
               ),

@@ -59,8 +59,8 @@ class _NotesWidgetState extends State<NotesWidget>
                     //   shape: BoxShape.circle,
                     // ),
                     child: Image(
-                      height: 80,
-                      width: 80,
+                      height: 67,
+                      width: 75,
                       fit: BoxFit.cover,
                       image: AssetImage("assets/images/person.jpg"),
                     ),

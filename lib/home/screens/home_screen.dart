@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: Icon(
-                  CustomIcons.paper_plane,
+                  CustomIcons.paperPlane,
                 ),
               ),
             ),

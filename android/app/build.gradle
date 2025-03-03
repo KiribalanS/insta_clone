@@ -38,36 +38,36 @@ android {
         }
     }
 
-    flavorDimensions "app"
+    // flavorDimensions "app"
 
-    productFlavors{
-        dev {
-            dimension "app"
-            applicationId "com.example.insta_clone.dev"
-            versionCode 1
-            versionName "1.0.0"
-            // resValue "string", "app_name", "dev insta_clone"
-            // versionNameSuffix "-dev" 
-        }
+    // productFlavors{
+    //     dev {
+    //         dimension "app"
+    //         applicationId "com.example.insta_clone"
+    //         versionCode 1
+    //         versionName "1.0.0"
+    //         // resValue "string", "app_name", "dev insta_clone"
+    //         // versionNameSuffix "-dev" 
+    //     }
 
-        // tester {
-        //     dimension "app"
-        //     applicationId "com.example.insta_clone.tester"
-        //     versionCode 1
-        //     versionName "1.0.0"
-        //     // resValue "string", "app_name", "test insta_clone"
-        //     // versionNameSuffix "-test" 
-        // }
+    //     // tester {
+    //     //     dimension "app"
+    //     //     applicationId "com.example.insta_clone.tester"
+    //     //     versionCode 1
+    //     //     versionName "1.0.0"
+    //     //     // resValue "string", "app_name", "test insta_clone"
+    //     //     // versionNameSuffix "-test" 
+    //     // }
 
-        user {
-            dimension "app"
-            // resValue "string", "app_name", "user insta_clone"
-            // versionNameSuffix "-user" 
-            applicationId "com.example.insta_clone.user"
-            versionCode 1
-            versionName "1.0.0"
-        }
-    }
+    //     user {
+    //         dimension "app"
+    //         // resValue "string", "app_name", "user insta_clone"
+    //         // versionNameSuffix "-user" 
+    //         applicationId "com.example.insta_clone.user"
+    //         versionCode 1
+    //         versionName "1.0.0"
+    //     }
+    // }
 }
 
 flutter {

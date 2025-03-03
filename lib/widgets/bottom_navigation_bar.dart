@@ -59,8 +59,8 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             );
           },
         ),
-        InkWell(
-          onTap: () {
+        IconButton(
+          onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -79,15 +79,15 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               ),
             );
           },
-          child: Padding(
+          icon: Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: Icon(
-              CustomIcons.library_add,
+              CustomIcons.libraryAdd,
             ),
           ),
         ),
-        InkWell(
-          onTap: () {
+        IconButton(
+          onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -95,17 +95,23 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               ),
             );
           },
-          child: SizedBox(
-            height: 25,
-            width: 20,
+          // icon: Padding(
+          //   padding: const EdgeInsets.only(right: 8.0),
+          //   child: Icon(
+          //     CustomIcons.video,
+          //   ),
+          // ),
+          icon: SizedBox(
+            height: 30,
+            width: 25,
             child: Image(
               color: Colors.black,
               image: AssetImage("assets/icons/reel.png"),
             ),
           ),
         ),
-        InkWell(
-          onTap: () {
+        IconButton(
+          onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -113,7 +119,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               ),
             );
           },
-          child: Container(
+          icon: Container(
             height: 30,
             width: 30,
             decoration: BoxDecoration(
@@ -121,7 +127,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             ),
             clipBehavior: Clip.hardEdge,
             child: Image(
-              fit: BoxFit.contain,
+              fit: BoxFit.cover,
               image: AssetImage("assets/images/person.jpg"),
             ),
           ),

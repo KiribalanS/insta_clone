@@ -87,18 +87,18 @@ class CustomIcons {
 
   static const IconData play =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData comment_alt =
+  static const IconData commentAlt =
       IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData paper_plane =
+  static const IconData paperPlane =
       IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData comment =
       IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData video =
       IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData library_add =
+  static const IconData libraryAdd =
       IconData(0xe9ca, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData turned_in =
+  static const IconData turnedIn =
       IconData(0xeb60, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData turned_in_not =
+  static const IconData turnedInNot =
       IconData(0xeb61, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

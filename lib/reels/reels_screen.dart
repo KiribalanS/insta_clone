@@ -109,7 +109,7 @@ class _ReelsScreenState extends State<ReelsScreen>
                 children: [
                   Icon(Icons.favorite_border),
                   Icon(CustomIcons.comment),
-                  Icon(CustomIcons.paper_plane),
+                  Icon(CustomIcons.paperPlane),
                   Icon(Icons.more_horiz),
                   Icon(Icons.music_note),
                   SizedBox(

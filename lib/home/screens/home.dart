@@ -39,7 +39,15 @@ class _HomePageViewState extends State<HomePageView> {
             );
           },
         ),
-        const DirectMessage(),
+        DirectMessage(
+          onTap: () {
+            pageController.animateToPage(
+              1,
+              duration: Duration(milliseconds: 200),
+              curve: Curves.linear,
+            );
+          },
+        ),
       ],
     );
   }
