@@ -145,52 +145,67 @@ class _ProfileScreenState extends State<ProfileScreen>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)),
-                        color: Colors.blue,
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width * .40,
-                          height: 40,
-                          child: Center(
-                            child: Text(
-                              "Edit profile",
-                              textAlign: TextAlign.center,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * .40,
+                      height: 40,
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            side: BorderSide(
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary,
                             ),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Center(
+                          child: Text(
+                            "Edit profile",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(fontWeight: FontWeight.w700),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * .40,
+                      height: 40,
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            side: BorderSide(
+                              color: Theme.of(context).colorScheme.onSecondary,
+                            ),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Center(
+                          child: Text(
+                            "Share profile",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(fontWeight: FontWeight.w700),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
                       child: Card(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5)),
-                        color: Colors.grey,
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width * .40,
-                          height: 40,
-                          child: Center(
-                            child: Text(
-                              "Message",
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)),
-                        color: Colors.grey,
+                        color: Colors.grey.shade200,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 4.0),
                           child: Icon(
-                            size: 35,
-                            Icons.person_add_alt,
+                            size: 30,
+                            Icons.person_add_alt_1_outlined,
                           ),
                         ),
                       ),
