@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:insta_clone/send/cubit/send_count_cubit.dart';
-import 'package:insta_clone/send/widgets/custom_outline_button.dart';
-import 'package:insta_clone/send/widgets/custom_send_button.dart';
-import 'package:insta_clone/send/widgets/send_user_widget.dart';
+import 'package:insta_clone/post/send/cubit/send_count_cubit.dart';
+import 'package:insta_clone/post/send/widgets/custom_outline_button.dart';
+import 'package:insta_clone/post/send/widgets/custom_send_button.dart';
+import 'package:insta_clone/post/send/widgets/send_user_widget.dart';
 
 class ShowSend extends StatefulWidget {
   const ShowSend({super.key, required this.controller});

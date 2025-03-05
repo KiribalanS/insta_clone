@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
-import 'package:insta_clone/comment/cubit/comments_cubit.dart';
+import 'package:insta_clone/post/comment/cubit/comments_cubit.dart';
 import 'package:insta_clone/direct_messages/cubit/message_cubit.dart';
 import 'package:insta_clone/home/screens/home.dart';
-import 'package:insta_clone/send/cubit/send_count_cubit.dart';
+import 'package:insta_clone/post/send/cubit/send_count_cubit.dart';
 import 'package:insta_clone/theme.dart';
 
 class MyApp extends StatelessWidget {

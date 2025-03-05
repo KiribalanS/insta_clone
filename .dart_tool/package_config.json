@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "archive",
-      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/archive-4.0.2",
+      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/archive-4.0.4",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -33,13 +33,13 @@
     },
     {
       "name": "camera_android_camerax",
-      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.13",
+      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.14",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     },
     {
       "name": "camera_avfoundation",
-      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.18+8",
+      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.18+9",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -123,7 +123,7 @@
     },
     {
       "name": "flutter_bloc",
-      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/flutter_bloc-9.0.0",
+      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/flutter_bloc-9.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -141,9 +141,9 @@
     },
     {
       "name": "flutter_plugin_android_lifecycle",
-      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.24",
+      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.27",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.6"
     },
     {
       "name": "flutter_staggered_grid_view",
@@ -489,7 +489,7 @@
     },
     {
       "name": "video_player_android",
-      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/video_player_android-2.7.17",
+      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/video_player_android-2.8.0",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     },
@@ -519,7 +519,7 @@
     },
     {
       "name": "web",
-      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/web-1.1.0",
+      "rootUri": "file:///home/dell/.pub-cache/hosted/pub.dev/web-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -536,7 +536,7 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-03-03T04:52:23.890794Z",
+  "generated": "2025-03-05T08:50:07.918451Z",
   "generator": "pub",
   "generatorVersion": "3.6.1",
   "flutterRoot": "file:///home/dell/snap/flutter/common/flutter",

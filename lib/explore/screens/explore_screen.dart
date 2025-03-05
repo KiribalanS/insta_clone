@@ -4,7 +4,7 @@ import 'package:insta_clone/constants/ui_contants.dart';
 import 'package:insta_clone/explore/screens/post_details.dart';
 import 'package:insta_clone/explore/screens/search_screen.dart';
 import 'package:insta_clone/widgets/bottom_navigation_bar.dart';
-import 'package:insta_clone/widgets/post_widget.dart';
+import 'package:insta_clone/post/post_widget.dart';
 import 'package:insta_clone/widgets/search_widget.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 

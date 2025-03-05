@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:insta_clone/constants/ui_contants.dart';
 import 'package:insta_clone/models/story_model.dart';
 import 'package:insta_clone/widgets/bottom_navigation_bar.dart';
-import 'package:insta_clone/widgets/post_widget.dart';
-import 'package:insta_clone/widgets/story_widget.dart';
+import 'package:insta_clone/post/post_widget.dart';
+import 'package:insta_clone/home/widgets/story_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.onTap});

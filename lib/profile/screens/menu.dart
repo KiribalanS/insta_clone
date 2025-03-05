@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:insta_clone/constants/ui_contants.dart';
-import 'package:insta_clone/profile/widgets.dart/custom_menutile.dart';
+import 'package:insta_clone/profile/widgets/custom_menutile.dart';
 import 'package:insta_clone/widgets/search_widget.dart';
 
 class MenuScreen extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:insta_clone/send/cubit/send_count_cubit.dart';
+import 'package:insta_clone/post/send/cubit/send_count_cubit.dart';
 
 class SendUserWidget extends StatefulWidget {
   const SendUserWidget({super.key});

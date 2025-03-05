@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:insta_clone/direct_messages/widgets/shared_files_widget.dart';
 import 'package:insta_clone/models/story_model.dart';
 import 'package:insta_clone/profile/screens/menu.dart';
-import 'package:insta_clone/profile/widgets.dart/custom_profile_text.dart';
-import 'package:insta_clone/profile/widgets.dart/highlight_widget.dart';
+import 'package:insta_clone/profile/widgets/custom_profile_text.dart';
+import 'package:insta_clone/profile/widgets/highlight_widget.dart';
 import 'package:insta_clone/widgets/bottom_navigation_bar.dart';
-import 'package:insta_clone/widgets/story_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

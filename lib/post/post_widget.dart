@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/constants/ui_contants.dart';
-import 'package:insta_clone/comment/show_commet.dart';
-import 'package:insta_clone/send/screens/show_send.dart';
+import 'package:insta_clone/post/comment/show_commet.dart';
+import 'package:insta_clone/post/send/screens/show_send.dart';
 import 'package:lottie/lottie.dart';
 
 class PostWidget extends StatefulWidget {
