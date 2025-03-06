@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/constants/fav_icon.dart';
 import 'package:insta_clone/constants/ui_contants.dart';
+import 'package:insta_clone/post/send/screens/show_send.dart';
 import 'package:insta_clone/profile/profile_screen.dart';
 
 class StoryPage extends StatefulWidget {
@@ -149,8 +150,36 @@ class _StoryPageState extends State<StoryPage> {
                   FavIcon(),
                   IconButton(
                     onPressed: () {
-                      controller.clear();
-                      widget.focusNode.unfocus();
+                      if (controller.text.trim() == "") {
+                        showModalBottomSheet(
+                          backgroundColor: Colors.transparent,
+                          isScrollControlled: true,
+                          enableDrag: true,
+                          isDismissible: true,
+                          context: context,
+                          builder: (context) => Padding(
+                            padding: EdgeInsets.only(
+                              top: 30.0,
+                              bottom: MediaQuery.of(context).viewInsets.bottom,
+                            ),
+                            child: DraggableScrollableSheet(
+                                expand: true,
+                                initialChildSize:
+                                    .7, // Half-screen initial height
+                                minChildSize: .7,
+                                maxChildSize: 1, // Full screen when scrolled
+
+                                builder: (context, scrollController) {
+                                  return ShowSend(
+                                    controller: scrollController,
+                                  );
+                                }),
+                          ),
+                        );
+                      } else {
+                        controller.clear();
+                        widget.focusNode.unfocus();
+                      }
                     },
                     icon: Icon(
                       size: 31,
