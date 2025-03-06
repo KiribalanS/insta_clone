@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:photo_manager/photo_manager.dart';
@@ -11,7 +10,10 @@ class SelectPost extends StatefulWidget {
   State<SelectPost> createState() => _SelectPostState();
 }
 
-class _SelectPostState extends State<SelectPost> {
+class _SelectPostState extends State<SelectPost>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
   List<AssetEntity> mediaFiles = [];
   File? selectedFile;
 

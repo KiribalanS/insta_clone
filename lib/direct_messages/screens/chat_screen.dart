@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:insta_clone/constants/navigate_profile.dart';
 import 'package:insta_clone/direct_messages/cubit/message_cubit.dart';
 import 'package:insta_clone/direct_messages/screens/chat_profile.dart';
 import 'package:insta_clone/direct_messages/widgets/chat_message.dart';
@@ -57,14 +58,16 @@ class _ChatScreenState extends State<ChatScreen> {
             );
           },
           minLeadingWidth: 0,
-          leading: CircleAvatar(
-            radius: 20,
-            child: Icon(
-              size: 25,
-              Icons.person,
+          leading: NavigateProfile(
+            child: CircleAvatar(
+              radius: 20,
+              child: Icon(
+                size: 25,
+                Icons.person,
+              ),
             ),
           ),
-          title: Text("UserName"),
+          title: NavigateProfile(child: Text("UserName")),
           subtitle: Text("Active status"),
         ),
         actions: [

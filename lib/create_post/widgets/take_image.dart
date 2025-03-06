@@ -5,14 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:insta_clone/create_post/widgets/show_image.dart';
 
 class TakeImage extends StatefulWidget {
-  const TakeImage({super.key, required this.controller});
+  const TakeImage({super.key, required this.controller, required this.onTap});
+  final void Function() onTap;
 
   final CameraController controller;
   @override
   State<TakeImage> createState() => _TakeImageState();
 }
 
-class _TakeImageState extends State<TakeImage> {
+class _TakeImageState extends State<TakeImage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
   bool isLoading = false;
   File? file;
 
@@ -86,7 +90,9 @@ class _TakeImageState extends State<TakeImage> {
             bottom: 100,
             left: 10,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                widget.onTap();
+              },
               icon: Icon(Icons.image),
             ),
           ),

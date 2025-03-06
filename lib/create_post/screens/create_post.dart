@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:insta_clone/create_post/widgets/page_navigator.dart';
 import 'package:insta_clone/create_post/widgets/select_post.dart';
 import 'package:insta_clone/create_post/widgets/take_image.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -22,6 +23,7 @@ class _CreatePostState extends State<CreatePost> {
   bool permissionAvailable = false;
   late List<CameraDescription> cameras;
   final pageViewController = PageController();
+  final optionsPageViewController = PageController(viewportFraction: 0.2);
   late CameraController controller;
   getCameras() async {
     cameras = await availableCameras();
@@ -82,15 +84,18 @@ class _CreatePostState extends State<CreatePost> {
     getCameras();
   }
 
-  final List<String> options = [
-    "Post",
-    "Reel",
-    "Story",
-    "Live",
-  ];
   int selectedIndex = 0;
   double dragOffset = 0.0;
   double itemWidth = 50.0;
+
+  void toFirstPage() {
+    optionsPageViewController.animateToPage(
+      0,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.ease,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
@@ -140,79 +145,97 @@ class _CreatePostState extends State<CreatePost> {
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   SelectPost(),
-                  TakeImage(controller: controller),
-                  TakeImage(controller: controller),
-                  TakeImage(controller: controller),
+                  TakeImage(controller: controller, onTap: toFirstPage),
+                  TakeImage(controller: controller, onTap: toFirstPage),
+                  TakeImage(controller: controller, onTap: toFirstPage),
                 ],
               ),
+            // Positioned(
+            //   bottom: 50,
+            //   left: (mediaQuery.width / 2) - ((selectedIndex * itemWidth) + 50),
+            //   child: Draggable(
+            //     onDragEnd: (details) {
+            //       if (details.offset.direction == 90) {
+            //         int newIndex = (-details.offset.distance / (itemWidth))
+            //             .round()
+            //             .clamp(0, options.length - 1);
+            //         dragOffset = details.offset.distance;
+            //         print(itemWidth);
+            //         print(details.offset.distance);
+            //         print(details.offset);
+            //         setState(() {
+            //           selectedIndex = newIndex;
+            //         });
+            //         dragOffset = 0;
+            //       } else {
+            //         int newIndex = (details.offset.distance / (itemWidth))
+            //             .round()
+            //             .clamp(0, options.length - 1);
+            //         dragOffset = details.offset.distance;
+            //         print(itemWidth);
+            //         print(details.offset.distance);
+            //         print(details.offset);
+            //         setState(() {
+            //           selectedIndex = newIndex;
+            //         });
+            //         dragOffset = 0;
+            //       }
+            //     },
+            //     feedback: SizedBox(),
+            //     axis: Axis.horizontal,
+            //     child: Container(
+            //       decoration: BoxDecoration(
+            //           color: Colors.black87,
+            //           borderRadius: BorderRadius.circular(15)),
+            //       height: 40,
+            //       width: 250,
+            //       child: Center(
+            //         child: ListView.builder(
+            //           physics: NeverScrollableScrollPhysics(),
+            //           shrinkWrap: true,
+            //           scrollDirection: Axis.horizontal,
+            //           itemCount: options.length,
+            //           itemBuilder: (context, index) => TextButton(
+            //             onPressed: () {
+            //               setState(() {
+            //                 selectedIndex = index;
+            //                 pageViewController.animateToPage(selectedIndex,
+            //                     duration: Duration(milliseconds: 200),
+            //                     curve: Curves.bounceOut);
+            //               });
+            //             },
+            //             child: Text(
+            //               style:
+            //                   Theme.of(context).textTheme.bodyLarge!.copyWith(
+            //                         color: Colors.white,
+            //                         fontWeight: index == selectedIndex
+            //                             ? FontWeight.bold
+            //                             : FontWeight.normal,
+            //                       ),
+            //               options[index],
+            //             ),
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // ignore: sized_box_for_whitespace
+
             Positioned(
-              bottom: 50,
-              left: (mediaQuery.width / 2) - ((selectedIndex * itemWidth) + 50),
-              child: Draggable(
-                onDragEnd: (details) {
-                  if (details.offset.direction == 90) {
-                    int newIndex = (-details.offset.distance / (itemWidth))
-                        .round()
-                        .clamp(0, options.length - 1);
-                    dragOffset = details.offset.distance;
-                    print(itemWidth);
-                    print(details.offset.distance);
-                    print(details.offset);
-                    setState(() {
-                      selectedIndex = newIndex;
-                    });
-                    dragOffset = 0;
-                  } else {
-                    int newIndex = (details.offset.distance / (itemWidth))
-                        .round()
-                        .clamp(0, options.length - 1);
-                    dragOffset = details.offset.distance;
-                    print(itemWidth);
-                    print(details.offset.distance);
-                    print(details.offset);
-                    setState(() {
-                      selectedIndex = newIndex;
-                    });
-                    dragOffset = 0;
-                  }
+              bottom: 80,
+              left: 0,
+              right: 0,
+              child: PageNavigator(
+                optionsPageViewController: optionsPageViewController,
+                selectedIndex: 0,
+                onPageChange: (ind) {
+                  pageViewController.animateToPage(
+                    ind,
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.ease,
+                  );
                 },
-                feedback: SizedBox(),
-                axis: Axis.horizontal,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black87,
-                      borderRadius: BorderRadius.circular(15)),
-                  height: 40,
-                  width: 250,
-                  child: Center(
-                    child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: options.length,
-                      itemBuilder: (context, index) => TextButton(
-                        onPressed: () {
-                          setState(() {
-                            selectedIndex = index;
-                            pageViewController.animateToPage(selectedIndex,
-                                duration: Duration(milliseconds: 200),
-                                curve: Curves.bounceOut);
-                          });
-                        },
-                        child: Text(
-                          style:
-                              Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                    color: Colors.white,
-                                    fontWeight: index == selectedIndex
-                                        ? FontWeight.bold
-                                        : FontWeight.normal,
-                                  ),
-                          options[index],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
               ),
             ),
             if (!permissionAvailable)

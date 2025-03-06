@@ -13,12 +13,8 @@ class _ReelsPageViewState extends State<ReelsPageView> {
   List<String> urls = [
     'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
     'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-    'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-    'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-    'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-    'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-    'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-    'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+    'https://flutter.github.io/assets-for-api-docs/assets/animation/curve_bounce_out.mp4',
+    'https://flutter.github.io/assets-for-api-docs/assets/animation/curve_ease.mp4',
   ];
 
   @override

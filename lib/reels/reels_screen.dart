@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gif/gif.dart';
+import 'package:insta_clone/constants/fav_icon.dart';
+import 'package:insta_clone/constants/navigate_profile.dart';
 import 'package:insta_clone/constants/ui_contants.dart';
+import 'package:insta_clone/post/comment/show_commet.dart';
+import 'package:insta_clone/post/send/screens/show_send.dart';
+import 'package:insta_clone/reels/widgets/more_widget.dart';
+import 'package:lottie/lottie.dart';
 import 'package:readmore/readmore.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:text_scroll/text_scroll.dart';
@@ -18,12 +25,33 @@ class _ReelsScreenState extends State<ReelsScreen>
   bool isLoading = true;
   bool isFollowed = false;
   bool isLiked = false;
+  bool toAnimate = false;
   @override
   void dispose() {
     _controller.dispose();
+    likeAnimationController.dispose();
     super.dispose();
   }
 
+  late AnimationController likeAnimationController =
+      AnimationController(vsync: this);
+
+  void showAnimation() {
+    likeAnimationController.duration = Duration(seconds: 1);
+    likeAnimationController.forward();
+  }
+
+  void likePost() {
+    setState(() {
+      isLiked = !isLiked;
+      if (isLiked) {
+        toAnimate = true;
+      }
+    });
+    showAnimation();
+  }
+
+  late final _gifcontroller = GifController(vsync: this);
   @override
   void initState() {
     super.initState();
@@ -40,6 +68,15 @@ class _ReelsScreenState extends State<ReelsScreen>
     );
     _controller.setLooping(true);
     _controller.play();
+
+    likeAnimationController.addListener(() {
+      if (likeAnimationController.isCompleted) {
+        setState(() {
+          toAnimate = false;
+        });
+        likeAnimationController.reset();
+      }
+    });
 
     // _controller.addListener(
     //   () {
@@ -84,6 +121,7 @@ class _ReelsScreenState extends State<ReelsScreen>
                         _controller.play();
                       });
                     },
+                    onDoubleTap: likePost,
                     child: Center(
                       child: _controller.value.isInitialized
                           ? AspectRatio(
@@ -101,17 +139,121 @@ class _ReelsScreenState extends State<ReelsScreen>
                 //   LinearProgressIndicator(value: progressIndicator)
               ],
             ),
+            if (toAnimate)
+              Center(
+                child: Lottie.asset(
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.fill,
+                  "assets/lottie/like_2.json",
+                  repeat: false,
+                  controller: likeAnimationController,
+                ),
+              ),
             Positioned(
               right: 10,
               bottom: 10,
               child: Column(
-                spacing: 25,
+                spacing: 10,
                 children: [
-                  Icon(Icons.favorite_border),
-                  Icon(CustomIcons.comment),
-                  Icon(CustomIcons.paperPlane),
-                  Icon(Icons.more_horiz),
-                  Icon(Icons.music_note),
+                  FavIcon(
+                    isLiked: isLiked,
+                    onTap: likePost,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
+                        useSafeArea: true,
+                        isScrollControlled: true,
+                        isDismissible: true,
+                        enableDrag: true,
+                        // constraints: BoxConstraints.,
+                        context: context,
+                        builder: (context) => Padding(
+                          padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom,
+                          ),
+                          child: DraggableScrollableSheet(
+                              expand: true,
+                              initialChildSize:
+                                  .5, // Half-screen initial height
+                              minChildSize: .5,
+                              maxChildSize: 1, // Full screen when scrolled
+                              builder: (context, scrollController) {
+                                return ShowCommet(
+                                  controller: scrollController,
+                                );
+                              }),
+                        ),
+                      );
+                    },
+                    icon: Icon(
+                      CustomIcons.comment,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
+                        isScrollControlled: true,
+                        enableDrag: true,
+                        isDismissible: true,
+                        context: context,
+                        builder: (context) => Padding(
+                          padding: EdgeInsets.only(
+                            top: 30.0,
+                            bottom: MediaQuery.of(context).viewInsets.bottom,
+                          ),
+                          child: DraggableScrollableSheet(
+                              expand: true,
+                              initialChildSize:
+                                  .7, // Half-screen initial height
+                              minChildSize: .7,
+                              maxChildSize: 1, // Full screen when scrolled
+
+                              builder: (context, scrollController) {
+                                return ShowSend(
+                                  controller: scrollController,
+                                );
+                              }),
+                        ),
+                      );
+                    },
+                    icon: Icon(CustomIcons.paperPlane),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        showDragHandle: true,
+                        context: context,
+                        // backgroundColor: Colors.transparent,
+                        useSafeArea: true,
+                        isScrollControlled: true,
+                        builder: (context) => SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.75,
+                          child: MoreOptionsWidget(),
+                        ),
+                      );
+                    },
+                    icon: Icon(Icons.more_horiz),
+                  ),
+                  // Icon(Icons.music_note),
+                  Gif(
+                    height: 18,
+                    width: 18,
+                    image: AssetImage("assets/gif/player.gif"),
+                    controller:
+                        _gifcontroller, // if duration and fps is null, original gif fps will be used.
+                    //fps: 30,
+                    //duration: const Duration(seconds: 3),
+                    autostart: Autostart.loop,
+                    placeholder: (context) => const Text('.'),
+                    onFetchCompleted: () {
+                      // _controller.forward();
+                      // _controller.repeat();
+                    },
+                  ),
                   SizedBox(
                     height: 5,
                   )
@@ -133,12 +275,14 @@ class _ReelsScreenState extends State<ReelsScreen>
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          ClipOval(
-                            child: Image(
-                              height: 55,
-                              width: 55,
-                              fit: BoxFit.cover,
-                              image: AssetImage("assets/images/person.jpg"),
+                          NavigateProfile(
+                            child: ClipOval(
+                              child: Image(
+                                height: 55,
+                                width: 55,
+                                fit: BoxFit.cover,
+                                image: AssetImage("assets/images/person.jpg"),
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -146,7 +290,7 @@ class _ReelsScreenState extends State<ReelsScreen>
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("User Name"),
+                                NavigateProfile(child: Text("User Name")),
                                 TextScroll("song details"),
                               ],
                             ),

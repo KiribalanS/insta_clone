@@ -115,7 +115,9 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ProfileScreen(),
+                builder: (context) => ProfileScreen(
+                  isSelfProfile: true,
+                ),
               ),
             );
           },

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/constants/navigate_profile.dart';
 import 'package:insta_clone/constants/ui_contants.dart';
 import 'package:insta_clone/post/comment/show_commet.dart';
 import 'package:insta_clone/post/send/screens/show_send.dart';
+import 'package:insta_clone/post/widgets/more_widget.dart';
+import 'package:insta_clone/profile/profile_screen.dart';
 import 'package:lottie/lottie.dart';
+import 'package:readmore/readmore.dart';
 
 class PostWidget extends StatefulWidget {
   const PostWidget({super.key, this.path});
@@ -67,32 +71,53 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
             children: [
               Padding(
                 padding: const EdgeInsets.all(5.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                  ),
-                  clipBehavior: Clip.hardEdge,
-                  height: 50,
-                  width: 50,
-                  child: Image(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/images/person.jpg"),
+                child: NavigateProfile(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    clipBehavior: Clip.hardEdge,
+                    height: 50,
+                    width: 50,
+                    child: Image(
+                      fit: BoxFit.cover,
+                      image: AssetImage("assets/images/person.jpg"),
+                    ),
                   ),
                 ),
               ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "User Name",
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                        ),
+                  child: NavigateProfile(
+                    child: Text(
+                      "User Name",
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                          ),
+                    ),
                   ),
                 ),
               ),
-              Icon(Icons.more_horiz),
+              IconButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                    showDragHandle: true,
+                    context: context,
+                    // backgroundColor: Colors.transparent,
+                    useSafeArea: true,
+                    isScrollControlled: true,
+                    builder: (context) => SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.75,
+                      child: MoreOptionsWidget(
+                        controller: ScrollController(),
+                      ),
+                    ),
+                  );
+                },
+                icon: Icon(Icons.more_horiz),
+              ),
             ],
           ),
         ),
@@ -128,39 +153,36 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
               icon: Icon(
                   size: 30, isLiked ? Icons.favorite : Icons.favorite_border),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: IconButton(
-                onPressed: () {
-                  showModalBottomSheet(
-                    backgroundColor: Colors.transparent,
-                    useSafeArea: true,
-                    isScrollControlled: true,
-                    isDismissible: true,
-                    enableDrag: true,
-                    // constraints: BoxConstraints.,
-                    context: context,
-                    builder: (context) => Padding(
-                      padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom,
-                      ),
-                      child: DraggableScrollableSheet(
-                          expand: true,
-                          initialChildSize: .5, // Half-screen initial height
-                          minChildSize: .5,
-                          maxChildSize: 1, // Full screen when scrolled
-                          builder: (context, scrollController) {
-                            return ShowCommet(
-                              controller: scrollController,
-                            );
-                          }),
+            IconButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  useSafeArea: true,
+                  isScrollControlled: true,
+                  isDismissible: true,
+                  enableDrag: true,
+                  // constraints: BoxConstraints.,
+                  context: context,
+                  builder: (context) => Padding(
+                    padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom,
                     ),
-                  );
-                },
-                icon: Icon(
-                  CustomIcons.comment,
-                  size: 27,
-                ),
+                    child: DraggableScrollableSheet(
+                        expand: true,
+                        initialChildSize: .5, // Half-screen initial height
+                        minChildSize: .5,
+                        maxChildSize: 1, // Full screen when scrolled
+                        builder: (context, scrollController) {
+                          return ShowCommet(
+                            controller: scrollController,
+                          );
+                        }),
+                  ),
+                );
+              },
+              icon: Icon(
+                CustomIcons.comment,
+                size: 27,
               ),
             ),
             Padding(
@@ -258,6 +280,17 @@ class _PostWidgetState extends State<PostWidget> with TickerProviderStateMixin {
             textAlign: TextAlign.start,
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 6.0,
+            horizontal: 12,
+          ),
+          child: ReadMoreText(
+            "#insta #instagram #instagood #instadaily #love #instalike #like #follow #photography #photo #photooftheday #viral #likeforlikes #picoftheday #trending #instamood #india #fashion #likes #nature #followforfollowback #happy #style #instapic #life #explore #model #art #beautiful #explorepage",
+            // trimLines: 1,
+            trimLength: 75,
+          ),
+        )
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/constants/navigate_profile.dart';
 import 'package:insta_clone/direct_messages/widgets/custom_icon.dart';
 import 'package:insta_clone/direct_messages/widgets/custom_tile.dart';
 import 'package:insta_clone/direct_messages/widgets/saved_post.dart';
@@ -69,19 +70,23 @@ class _ChatProfileState extends State<ChatProfile>
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "userName",
-                        style: Theme.of(context).textTheme.titleLarge,
+                    NavigateProfile(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "userName",
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CustomIcon(
-                          content: "Profile",
-                          icon: Icons.person,
+                        NavigateProfile(
+                          child: CustomIcon(
+                            content: "Profile",
+                            icon: Icons.person,
+                          ),
                         ),
                         CustomIcon(
                           content: "Search",

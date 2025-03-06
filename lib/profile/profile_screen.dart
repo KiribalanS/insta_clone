@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/direct_messages/widgets/shared_files_widget.dart';
+import 'package:insta_clone/home/widgets/story_page_view.dart';
 import 'package:insta_clone/models/story_model.dart';
 import 'package:insta_clone/profile/screens/menu.dart';
 import 'package:insta_clone/profile/widgets/custom_profile_text.dart';
@@ -7,7 +8,8 @@ import 'package:insta_clone/profile/widgets/highlight_widget.dart';
 import 'package:insta_clone/widgets/bottom_navigation_bar.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({super.key, this.isSelfProfile = false});
+  final bool isSelfProfile;
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -161,7 +163,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                         onPressed: () {},
                         child: Center(
                           child: Text(
-                            "Edit profile",
+                            widget.isSelfProfile ? "Edit profile" : "Follow",
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge!
@@ -186,7 +188,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                         onPressed: () {},
                         child: Center(
                           child: Text(
-                            "Share profile",
+                            widget.isSelfProfile ? "Share profile" : "Message",
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge!
@@ -228,8 +230,19 @@ class _ProfileScreenState extends State<ProfileScreen>
                       scrollDirection: Axis.horizontal,
                       itemCount: dummyStories.length,
                       itemBuilder: (context, index) {
-                        return HighlightWidget(
-                          story: dummyStories[index],
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => StoryPageView(
+                                    startPage: index,
+                                  ),
+                                ));
+                          },
+                          child: HighlightWidget(
+                            story: dummyStories[index],
+                          ),
                         );
                       },
                     ),

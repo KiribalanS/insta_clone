@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:insta_clone/constants/dummy_data.dart';
 import 'package:insta_clone/post/send/cubit/send_count_cubit.dart';
 import 'package:insta_clone/post/send/widgets/custom_outline_button.dart';
 import 'package:insta_clone/post/send/widgets/custom_send_button.dart';
@@ -74,18 +75,41 @@ class _ShowSendState extends State<ShowSend> {
             ),
             if (count <= 0)
               SizedBox(
-                height: 80,
+                height: 100,
                 child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 15,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CircleAvatar(
-                      radius: 30,
-                    ),
-                  ),
-                ),
+                    shrinkWrap: true,
+                    itemCount: shareApps.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      final String name = shareApps[index]["name"];
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            CircleAvatar(
+                              radius: 30,
+                              child: shareApps[index]["logo"] is IconData
+                                  ? Icon(shareApps[index]["logo"])
+                                  : Image.network(
+                                      shareApps[index]["logo"],
+                                      errorBuilder:
+                                          (context, error, stackTrace) => Icon(
+                                              Icons.error,
+                                              size: 30), // Error fallback
+                                    ),
+                            ),
+                            Text(
+                              name.substring(
+                                0,
+                                name.length < 10 ? name.length : 10,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
               ),
             if (count == 1) CustomSendButton(content: "Send"),
             if (count > 1)

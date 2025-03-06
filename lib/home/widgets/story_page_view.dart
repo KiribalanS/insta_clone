@@ -50,14 +50,25 @@ class _StoryPageViewState extends State<StoryPageView> {
           //     // _controller.play();
           //   });
           // },
+          onTapDown: (details) {
+            print(details.localPosition);
+            print(details.globalPosition);
+            if (details.localPosition.dx < 170) {
+              controller.previousPage(Duration(milliseconds: 750));
+            }
+
+            if (details.localPosition.dx > 230) {
+              controller.nextPage(Duration(milliseconds: 750));
+            }
+          },
           onPanUpdate: (details) {
             if (details.delta.dx > 0) {
               if (index > 0) {
-                controller.previousPage(Duration(milliseconds: 300));
+                controller.previousPage(Duration(milliseconds: 750));
               }
             } else if (details.delta.dx < 0) {
               if (index < 15) {
-                controller.nextPage(Duration(milliseconds: 300));
+                controller.nextPage(Duration(milliseconds: 750));
               } else {
                 Navigator.pop(context);
               }

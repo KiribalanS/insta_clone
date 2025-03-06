@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gif/gif.dart';
+import 'package:insta_clone/constants/navigate_profile.dart';
 import 'package:insta_clone/direct_messages/widgets/reply_notes.dart';
 import 'package:insta_clone/models/notes_model.dart';
 import 'package:text_scroll/text_scroll.dart';
@@ -50,19 +51,21 @@ class _NotesWidgetState extends State<NotesWidget>
           children: [
             Stack(
               children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.only(top: 25.0, left: 10, right: 10),
-                  child: ClipOval(
-                    // clipBehavior: Clip.hardEdge,
-                    // decoration: BoxDecoration(
-                    //   shape: BoxShape.circle,
-                    // ),
-                    child: Image(
-                      height: 67,
-                      width: 75,
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/images/person.jpg"),
+                NavigateProfile(
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(top: 25.0, left: 10, right: 10),
+                    child: ClipOval(
+                      // clipBehavior: Clip.hardEdge,
+                      // decoration: BoxDecoration(
+                      //   shape: BoxShape.circle,
+                      // ),
+                      child: Image(
+                        height: 67,
+                        width: 75,
+                        fit: BoxFit.cover,
+                        image: AssetImage("assets/images/person.jpg"),
+                      ),
                     ),
                   ),
                 ),

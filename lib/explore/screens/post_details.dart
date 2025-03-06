@@ -9,8 +9,12 @@ class PostDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: PostWidget(
-          path: path,
+        child: ListView.builder(
+          itemBuilder: (context, index) {
+            return PostWidget(
+              path: index == 0 ? path : "assets/jpeg/${index % 10}.jpeg",
+            );
+          },
         ),
       ),
     );
