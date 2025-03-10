@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:insta_clone/constants/fav_icon.dart';
 import 'package:insta_clone/constants/ui_contants.dart';
 import 'package:insta_clone/post/send/screens/show_send.dart';
-import 'package:insta_clone/profile/profile_screen.dart';
+import 'package:insta_clone/profile/screens/profile_screen.dart';
 
 class StoryPage extends StatefulWidget {
   const StoryPage({super.key, required this.index, required this.focusNode});

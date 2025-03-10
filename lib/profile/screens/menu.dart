@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:insta_clone/auth/screens/login.dart';
+import 'package:insta_clone/auth/screens/signup.dart';
 import 'package:insta_clone/constants/ui_contants.dart';
 import 'package:insta_clone/profile/widgets/custom_menutile.dart';
 import 'package:insta_clone/widgets/search_widget.dart';
@@ -111,7 +113,12 @@ class _MenuScreenState extends State<MenuScreen> {
               CustomMenutile(content: e.key, icon: e.value),
             divider,
             TextButton(
-              onPressed: null,
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LoginScreen(),
+                ),
+              ),
               child: Text(
                 "Log in",
                 style: TextStyle(
@@ -120,7 +127,12 @@ class _MenuScreenState extends State<MenuScreen> {
               ),
             ),
             TextButton(
-              onPressed: null,
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SignUpScreen(),
+                ),
+              ),
               child: Text(
                 "Add account",
                 style: TextStyle(
@@ -129,7 +141,12 @@ class _MenuScreenState extends State<MenuScreen> {
               ),
             ),
             TextButton(
-              onPressed: null,
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LoginScreen(),
+                ),
+              ),
               child: Text(
                 "Log out",
                 style: TextStyle(
@@ -138,7 +155,12 @@ class _MenuScreenState extends State<MenuScreen> {
               ),
             ),
             TextButton(
-              onPressed: null,
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LoginScreen(),
+                ),
+              ),
               child: Text(
                 "Log out of all accounts",
                 style: TextStyle(

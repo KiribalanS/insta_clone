@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:insta_clone/profile/profile_screen.dart';
+import 'package:insta_clone/profile/screens/profile_screen.dart';
 
 class NavigateProfile extends StatelessWidget {
   const NavigateProfile({super.key, required this.child});

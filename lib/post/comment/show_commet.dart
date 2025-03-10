@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:insta_clone/post/comment/comment_widget.dart';
 import 'package:insta_clone/post/comment/cubit/comments_cubit.dart';
-import 'package:insta_clone/profile/profile_screen.dart';
+import 'package:insta_clone/profile/screens/profile_screen.dart';
 
 class ShowCommet extends StatefulWidget {
   const ShowCommet({super.key, required this.controller});

@@ -4,7 +4,7 @@ import 'package:insta_clone/constants/ui_contants.dart';
 import 'package:insta_clone/post/comment/show_commet.dart';
 import 'package:insta_clone/post/send/screens/show_send.dart';
 import 'package:insta_clone/post/widgets/more_widget.dart';
-import 'package:insta_clone/profile/profile_screen.dart';
+import 'package:insta_clone/profile/screens/profile_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:readmore/readmore.dart';
 

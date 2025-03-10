@@ -22,3 +22,4 @@ analysis_options.yaml
 insta_clone.iml
 pubspec.lock
 .dart_tool/*
+android/app/
