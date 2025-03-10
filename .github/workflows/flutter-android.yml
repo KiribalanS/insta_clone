@@ -3,7 +3,7 @@ name: Flutter Android Build
 on:
   push:
     branches:
-      - main # Change to your branch if needed
+      - main
   pull_request:
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
         run: flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk -t lib/dev_main.dart --release
 
       - name: Move APK to Root Directory
         run: |
