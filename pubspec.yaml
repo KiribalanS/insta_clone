@@ -49,6 +49,7 @@ flutter:
     - assets/jpeg/
     - assets/png/
     - assets/jpg/
+    - shorebird.yaml
 
   fonts:
     - family: MyFlutterApp

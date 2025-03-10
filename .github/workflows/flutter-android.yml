@@ -1,0 +1,39 @@
+name: Flutter Android Build
+
+on:
+  push:
+    branches:
+      - main # Change to your branch if needed
+  pull_request:
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.x" # Change to your Flutter version
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Move APK to Root Directory
+        run: |
+          mkdir -p build
+          mv build/app/outputs/flutter-apk/app-release.apk build/output.apk
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-apk
+          path: build/output.apk
